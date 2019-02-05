@@ -20,22 +20,22 @@ CREATE OR REPLACE FUNCTION REGISTER_RESERVABLE_ROOMS()
   RETURNS
     INT AS $$
 DECLARE
-  total INT/;
-  i INT4/;
-  id INT4/;
+  total INT;
+  i INT4;
+  id INT4;
 BEGIN
-  total := 0/;
+  total := 0;
   FOR id IN SELECT room_id
             FROM meeting_room LOOP
-    i := 0/;
+    i := 0;
     FOR i IN 0..77 LOOP
       INSERT INTO reservable_room (reserved_date, room_id)
-      VALUES (CURRENT_DATE + i - 7, id)/;
-    END LOOP/;
-    total := total + i/;
-  END LOOP/;
-  RETURN total/;
-END/;
+      VALUES (CURRENT_DATE + i - 7, id);
+    END LOOP;
+    total := total + i;
+  END LOOP;
+  RETURN total;
+END;
 $$ LANGUAGE plpgsql
 /;
 SELECT REGISTER_RESERVABLE_ROOMS() /;

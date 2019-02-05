@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.Objects;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 
+@Entity
 public class Reservation implements Serializable {
 
 	@Id
